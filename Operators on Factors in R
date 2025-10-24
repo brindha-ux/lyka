@@ -1,0 +1,21 @@
+Category <- function(items){
+  obj <- list(Items = factor(items))   # Store as factor
+  class(obj) <- "Category"             # Assign S3 class
+  return(obj)
+}
+analyze.Category <- function(obj){
+  cat("Factor Items:\n"); print(obj$Items)
+  
+  cat("\nLevels of Factor:\n"); print(levels(obj$Items))
+  
+  cat("\nFrequency Count:\n"); print(summary(obj$Items))
+  
+  cat("\nSorted Factor:\n"); print(sort(obj$Items))
+  
+  cat("\nReordered Factor (reverse levels):\n")
+  new_fac <- factor(obj$Items, levels = rev(levels(obj$Items)))
+  print(new_fac)
+}
+user_items <- unlist(strsplit(readline(prompt="Enter categories separated by space: "), " "))
+catObj <- Category(user_items)
+analyze.Category(catObj)
