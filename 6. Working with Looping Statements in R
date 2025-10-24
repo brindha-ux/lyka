@@ -1,0 +1,37 @@
+LoopDemo <- function(nums, factNum){
+  obj <- list(
+    Numbers = nums,
+  FactorialNumber = factNum
+   )
+   class(obj) <- "LoopDemo"
+  return(obj)
+ }
+ process <- function(obj) {
+   UseMethod("process")
+ }
+process.LoopDemo <- function(obj){
+   total <- 0
+   for(i in obj$Numbers){
+   total <- total + i
+   }
+  cat("Sum of Numbers using for loop:", total, "\n")
+  n <- obj$FactorialNumber
+ fact <- 1
+  while(n > 0){
+   fact <- fact * n
+   n <- n - 1
+  }
+  cat("Factorial using while loop:", fact, "\n")
+   cat("Numbers generated using repeat loop:\n")
+  x <- 1
+ repeat{
+    cat(x, " ")
+  x <- x + 2
+   if(x > 20) break
+  }
+   cat("\n")
+ }
+ nums <- c(1, 2, 3, 4, 5)   
+factNum <- 5              
+loopObj <- LoopDemo(nums, factNum)
+process(loopObj)
