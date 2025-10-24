@@ -1,0 +1,15 @@
+ Document<-function(text){
+  obj<-list(Text=text,Words=unlist(strsplit(tolower(text),"\\s+")))
+  class(obj)<-"Document"
+  return(obj)
+  }
+  wordcount.Document<-function(obj){
+  tbl<-table(obj$Words)
+  return(tbl)
+  }
+  print.Document<-function(obj){
+  cat("Document:",obj$Text,"\n")
+  print(wordcount.Document(obj))
+  }
+  doc1<-Document("Data science is powerful and data is everywhere")
+  print(doc1)
