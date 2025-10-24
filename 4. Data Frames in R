@@ -1,0 +1,29 @@
+StudentData <- function(ids, names, marks){
+  obj <- list(
+    DF = data.frame(ID = ids, Name = names, Marks = marks)
+  )
+  class(obj) <- "StudentData"   # Assign S3 class
+  return(obj)
+}
+analyze.StudentData <- function(obj){
+  cat("Original Data Frame:\n")
+  print(obj$DF)
+  
+  cat("\nAccessing 1st Row:\n")
+  print(obj$DF[1, ])
+  cat("\nAccessing 'Name' Column:\n")
+  print(obj$DF$Name)
+  cat("\nAdding Grade Column:\n")
+  obj$DF$Grade <- ifelse(obj$DF$Marks >= 90, "A",
+                         ifelse(obj$DF$Marks >= 75, "B", "C"))
+  print(obj$DF)
+  cat("\nFiltering Students with Marks >= 80:\n")
+  print(subset(obj$DF, Marks >= 80))
+  cat("\nStatistical Summary of Marks:\n")
+  print(summary(obj$DF$Marks))
+}
+ids <- as.integer(unlist(strsplit(readline("Enter student IDs separated by space: "), " ")))
+names <- unlist(strsplit(readline("Enter student names separated by space: "), " "))
+marks <- as.numeric(unlist(strsplit(readline("Enter student marks separated by space: "), " ")))
+studObj <- StudentData(ids, names, marks)
+analyze.StudentData(studObj)
