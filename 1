@@ -1,0 +1,23 @@
+1. R Expressions &amp; Data Structures
+
+Program:
+
+Expression &lt;- function(x,y)
+{
+obj &lt;- list(X=x, Y=y, Result=NULL)
+class(obj) &lt;- &quot;Expression&quot;
+return(obj)
+}
+evaluate.Expression &lt;- function(obj)
+{
+obj$Result &lt;- obj$X^2 + obj$Y^2
+return(obj)
+}
+print.Expression &lt;- function(obj)
+{
+cat(&quot;X:&quot;, obj$X, &quot; Y:&quot;, obj$Y, &quot;\n&quot;)
+cat(&quot;Result (x^2 + y^2):&quot;, obj$Result, &quot;\n&quot;)
+}
+exp1 &lt;- Expression(10,5)
+exp1 &lt;- evaluate.Expression(exp1)
+print(exp1)
