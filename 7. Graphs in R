@@ -1,0 +1,20 @@
+data(mtcars)
+hist(mtcars$mpg,
+     main = "Histogram of Miles per Gallon",
+     xlab = "Miles per Gallon",
+     col = "lightblue", border = "black")
+boxplot(mtcars$hp,
+        main = "Boxplot of Horsepower",
+        ylab = "Horsepower",
+        col = "lightgreen")
+plot(mtcars$hp, mtcars$mpg,
+     main = "Scatterplot of MPG vs Horsepower",
+     xlab = "Horsepower",
+     ylab = "Miles per Gallon",
+     col = "blue", pch = 19)
+plot(mtcars$mpg,
+     type = "o",
+     main = "Line Chart of MPG across Cars",
+     xlab = "Car Index",
+     ylab = "Miles per Gallon",
+     col = "red")
