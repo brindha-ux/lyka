@@ -1,0 +1,22 @@
+library(scatterplot3d)
+ x <- 1:10
+ y <- x^2
+ z <- x^3
+ scatterplot3d(x, y, z,
+               main = "3D Scatter Plot",
+               xlab = "X axis",
+               ylab = "Y axis",
+               zlab = "Z axis",
+               color = "blue",
+               pch = 19)
+ scatterplot3d(x, y, z, angle = 55)
+ s3d <- scatterplot3d(x, y, z)
+ fit <- lm(z ~ x + y)  # linear model
+ s3d$plane3d(fit)
+  z <- outer(x, y, function(x, y) cos(sqrt(x^2 + y^2)))
+  persp(x, y, z,
+       col = "lightblue",
+       theta = 30, phi = 20,    # rotation angles
+       expand = 0.5,
+       xlab = "X", ylab = "Y", zlab = "Z",
+       main = "3D Surface Plot (persp)")
