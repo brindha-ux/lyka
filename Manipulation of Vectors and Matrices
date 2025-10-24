@@ -1,0 +1,26 @@
+setClass("MathData", 
+         slots = list(Vec = "numeric", Mat = "matrix"))
+setGeneric("vectorOps", function(object) standardGeneric("vectorOps"))
+setMethod("vectorOps", "MathData", function(object){
+  cat("Vector Elements:", object@Vec, "\n")
+  cat("First Element:", object@Vec[1], "\n")
+  cat("Subset (2nd to 4th):", object@Vec[2:4], "\n")
+  cat("Sum of Vector:", sum(object@Vec), "\n")
+  cat("Mean of Vector:", mean(object@Vec), "\n")
+  cat("Sorted Vector:", sort(object@Vec), "\n\n")
+})
+setGeneric("matrixOps", function(object) standardGeneric("matrixOps"))
+setMethod("matrixOps", "MathData", function(object){
+  cat("Matrix:\n"); print(object@Mat)
+  cat("\nTranspose:\n"); print(t(object@Mat))
+  cat("\nFirst Row:", object@Mat[1,], "\n")
+  cat("Second Column:", object@Mat[,2], "\n")
+  cat("\nMatrix Multiplication (Mat %*% t(Mat)):\n")
+  print(object@Mat %*% t(object@Mat))
+})
+vec_input <- as.numeric(unlist(strsplit(readline(prompt="Enter vector elements separated by space: "), " ")))
+mat_input <- matrix(as.numeric(unlist(strsplit(readline(prompt="Enter 9 numbers for 3x3 matrix: "), " "))),
+                    nrow=3, byrow=TRUE)
+md <- new("MathData", Vec = vec_input, Mat = mat_input)
+vectorOps(md)
+matrixOps(md)
